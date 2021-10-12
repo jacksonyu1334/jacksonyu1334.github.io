@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Cplex教程（C++）[toc] 背景Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。  求解速度十分快，并且听说可以支持上千个变量。 在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。  但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？ 但是瑕不掩瑜，Cplex依">
+<meta name="description" content="Cplex教程（C++）背景Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。  求解速度十分快，并且听说可以支持上千个变量。 在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。  但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？ 但是瑕不掩瑜，Cplex依旧是我求解规">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cplex使用方法">
 <meta property="og:url" content="http://example.com/2021/10/08/Cplex%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
-<meta property="og:description" content="Cplex教程（C++）[toc] 背景Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。  求解速度十分快，并且听说可以支持上千个变量。 在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。  但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？ 但是瑕不掩瑜，Cplex依">
+<meta property="og:description" content="Cplex教程（C++）背景Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。  求解速度十分快，并且听说可以支持上千个变量。 在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。  但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？ 但是瑕不掩瑜，Cplex依旧是我求解规">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-10-07T17:03:00.000Z">
-<meta property="article:modified_time" content="2021-10-07T17:04:31.233Z">
+<meta property="article:modified_time" content="2021-10-12T16:29:35.839Z">
 <meta property="article:author" content="Jackson Yu">
 <meta property="article:tag" content="软件使用">
 <meta name="twitter:card" content="summary">
@@ -121,7 +121,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -202,10 +202,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-10-08 01:03:00 / Modified: 01:04:31" itemprop="dateCreated datePublished" datetime="2021-10-08T01:03:00+08:00">2021-10-08</time>
+      <time title="Created: 2021-10-08 01:03:00" itemprop="dateCreated datePublished" datetime="2021-10-08T01:03:00+08:00">2021-10-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-10-13 00:29:35" itemprop="dateModified" datetime="2021-10-13T00:29:35+08:00">2021-10-13</time>
+      </span>
 
   
 </div>
@@ -217,8 +223,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Cplex教程（C-）"><a href="#Cplex教程（C-）" class="headerlink" title="Cplex教程（C++）"></a>Cplex教程（C++）</h1><p>[toc]</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。</p>
+        <h1 id="Cplex教程（C-）"><a href="#Cplex教程（C-）" class="headerlink" title="Cplex教程（C++）"></a>Cplex教程（C++）</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。</p>
 <ul>
 <li>求解速度十分快，并且听说可以支持上千个变量。</li>
 <li>在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。</li>
@@ -226,6 +231,10 @@
 <p>但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？</p>
 <p>但是瑕不掩瑜，Cplex依旧是我求解规划的第一选择，下面我来结合官方文档简单介绍一下Cplex的入门使用，进阶的操作方法需要靠读者们自行去钻研啦。这里贴一下Cplex的官方文档，写得十分棒，不需要再去借鉴其他资料了。</p>
 <p><a target="_blank" rel="noopener" href="https://www.ibm.com/docs/zh/icos/12.10.0?topic=technology-creating-environment-iloenv">Cplex官方文档</a></p>
+<span id="more"></span>
+
+
+
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>本人是在Win系统下搭建Cplex环境的，前前后后花了大概一节操作系统课的时间才完成（yp哥应该不会看到这篇博客）。网上的很多教程都是针对VS2015或者是更早的一些版本搭建的，在借鉴后发现都存在问题。最后，我是参考了一个up主的视频教程才完美搭建的。</p>
 <p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1na4y1a7YE?from=search&seid=9458620916324537533&spm_id_from=333.337.0.0">Cplex环境搭建视频教程</a></p>
 <h2 id="简单语法介绍"><a href="#简单语法介绍" class="headerlink" title="简单语法介绍"></a>简单语法介绍</h2><h3 id="环境创建与关闭"><a href="#环境创建与关闭" class="headerlink" title="环境创建与关闭"></a>环境创建与关闭</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IloEnv env;</span><br><span class="line">env.<span class="built_in">end</span>();</span><br></pre></td></tr></table></figure>
@@ -274,9 +283,6 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/10/07/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
-                </a>
             </div>
             <div class="post-nav-item">
                 <a href="/2021/10/08/Python-K-means%E8%81%9A%E7%B1%BB/" rel="next" title="Python-K-means聚类">

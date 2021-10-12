@@ -117,7 +117,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -275,10 +275,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-10-08 01:10:39 / Modified: 01:11:24" itemprop="dateCreated datePublished" datetime="2021-10-08T01:10:39+08:00">2021-10-08</time>
+      <time title="Created: 2021-10-08 01:10:39" itemprop="dateCreated datePublished" datetime="2021-10-08T01:10:39+08:00">2021-10-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-10-13 00:29:49" itemprop="dateModified" datetime="2021-10-13T00:29:49+08:00">2021-10-13</time>
+      </span>
 
   
 </div>
@@ -293,19 +299,14 @@
           <h1 id="K-means聚类"><a href="#K-means聚类" class="headerlink" title="K-means聚类"></a>K-means聚类</h1><h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>用于解决以下问题：有n个点，每个点都有m个特征值（一般不会太多），将其分为k类。</p>
 <p>要求：类与类之间的差距尽可能大，类之间各点的差距尽可能小。这一目标我们使用<strong>轮廓系数</strong>来衡量。</p>
 <p>下面我将展示如何调用python中的sklearn快速地完成聚类算法。</p>
-<h2 id="需要导入的库"><a href="#需要导入的库" class="headerlink" title="需要导入的库"></a>需要导入的库</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> silhouette_score</span><br><span class="line"><span class="keyword">from</span> Bio.Cluster <span class="keyword">import</span> kcluster</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="中心点坐标以及分类结果"><a href="#中心点坐标以及分类结果" class="headerlink" title="中心点坐标以及分类结果"></a>中心点坐标以及分类结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里的X是原始点坐标，n行m列，表示有n个点，每个点的特征值数量为m个</span></span><br><span class="line"><span class="comment"># 这里n_clusters=4表示分为4类</span></span><br><span class="line">K = KMeans(n_clusters=<span class="number">4</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 这句话必不可少</span></span><br><span class="line">y_pred = K.fit_predict(X)</span><br><span class="line"><span class="comment"># 中心点</span></span><br><span class="line">center = K.cluster_centers_</span><br><span class="line"><span class="built_in">print</span>(center)</span><br><span class="line"><span class="comment"># 分类结果</span></span><br><span class="line">label=K.labels_</span><br><span class="line"><span class="built_in">print</span>(label)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="轮廓系数"><a href="#轮廓系数" class="headerlink" title="轮廓系数"></a>轮廓系数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下面这一系列过程完成了分别求出分3类到15类情况下轮廓系数的大小（最大的为最佳方案）</span></span><br><span class="line">coef = []</span><br><span class="line"></span><br><span class="line">x = <span class="built_in">range</span>(<span class="number">3</span>, <span class="number">15</span>)</span><br><span class="line"><span class="keyword">for</span> clusters <span class="keyword">in</span> x:</span><br><span class="line">    <span class="built_in">print</span>(clusters)</span><br><span class="line">    clusterid, error, nfound = kcluster(X, clusters, dist=<span class="string">&#x27;u&#x27;</span>, npass=<span class="number">100</span>)</span><br><span class="line">    silhouette_avg = silhouette_score(X, clusterid, metric=<span class="string">&#x27;cosine&#x27;</span>)</span><br><span class="line">    coef.append(silhouette_avg)</span><br><span class="line"></span><br><span class="line">e = [i + <span class="number">3</span> <span class="keyword">for</span> i, j <span class="keyword">in</span> <span class="built_in">enumerate</span>(coef) <span class="keyword">if</span> j == <span class="built_in">max</span>(coef)]</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="built_in">print</span>(coef)</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/08/Python-K-means%E8%81%9A%E7%B1%BB/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -354,10 +355,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-10-08 01:03:00 / Modified: 01:04:31" itemprop="dateCreated datePublished" datetime="2021-10-08T01:03:00+08:00">2021-10-08</time>
+      <time title="Created: 2021-10-08 01:03:00" itemprop="dateCreated datePublished" datetime="2021-10-08T01:03:00+08:00">2021-10-08</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-10-13 00:29:35" itemprop="dateModified" datetime="2021-10-13T00:29:35+08:00">2021-10-13</time>
+      </span>
 
   
 </div>
@@ -369,8 +376,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Cplex教程（C-）"><a href="#Cplex教程（C-）" class="headerlink" title="Cplex教程（C++）"></a>Cplex教程（C++）</h1><p>[toc]</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。</p>
+          <h1 id="Cplex教程（C-）"><a href="#Cplex教程（C-）" class="headerlink" title="Cplex教程（C++）"></a>Cplex教程（C++）</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>Cplex是一款十分强大的商用规划求解器，之前本人在求解博弈策略的时候使用过，认为其至少有两大优势。</p>
 <ul>
 <li>求解速度十分快，并且听说可以支持上千个变量。</li>
 <li>在C++中，与Cplex接口的语法十分简单，几乎就是无脑编写。</li>
@@ -378,115 +384,14 @@
 <p>但是在使用的过程中我也发现了一些问题，比如有一些较复杂的多次规划，matlab可以求解但是Cplex好像不支持求解？</p>
 <p>但是瑕不掩瑜，Cplex依旧是我求解规划的第一选择，下面我来结合官方文档简单介绍一下Cplex的入门使用，进阶的操作方法需要靠读者们自行去钻研啦。这里贴一下Cplex的官方文档，写得十分棒，不需要再去借鉴其他资料了。</p>
 <p><a target="_blank" rel="noopener" href="https://www.ibm.com/docs/zh/icos/12.10.0?topic=technology-creating-environment-iloenv">Cplex官方文档</a></p>
-<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>本人是在Win系统下搭建Cplex环境的，前前后后花了大概一节操作系统课的时间才完成（yp哥应该不会看到这篇博客）。网上的很多教程都是针对VS2015或者是更早的一些版本搭建的，在借鉴后发现都存在问题。最后，我是参考了一个up主的视频教程才完美搭建的。</p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1na4y1a7YE?from=search&seid=9458620916324537533&spm_id_from=333.337.0.0">Cplex环境搭建视频教程</a></p>
-<h2 id="简单语法介绍"><a href="#简单语法介绍" class="headerlink" title="简单语法介绍"></a>简单语法介绍</h2><h3 id="环境创建与关闭"><a href="#环境创建与关闭" class="headerlink" title="环境创建与关闭"></a>环境创建与关闭</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IloEnv env;</span><br><span class="line">env.<span class="built_in">end</span>();</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="变量的创建"><a href="#变量的创建" class="headerlink" title="变量的创建"></a>变量的创建</h3><p>对于简单变量的创建使用形如下面的语句：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IloNumVarArray <span class="title">vars</span><span class="params">(env)</span></span>;</span><br><span class="line"><span class="comment">//类型可以是 ILOFLOAT、ILOINT 或 ILOBOOL，分别代表连续变量、整数变量或布尔型变量。</span></span><br><span class="line">vars.<span class="built_in">add</span>(<span class="built_in">IloNumVar</span>(env, <span class="number">0</span>, <span class="number">40</span>, ILOINT));  <span class="comment">// 0 &lt;= x1 &lt;= 40 且 x1为整数</span></span><br><span class="line">vars.<span class="built_in">add</span>(<span class="built_in">IloNumVar</span>(env, <span class="number">-1</span>, <span class="number">10</span>, ILOINT));</span><br></pre></td></tr></table></figure>
-
-<p>注意用此类语句顺序创建出来的变量在之后的程序中分别表现为***vars[0]、vars[1]、vars[2]***等</p>
-<p>对于复杂的变量表达式创建可以参考如下语句：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IloExpr <span class="title">expr</span><span class="params">(env)</span></span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x.<span class="built_in">getSize</span>(); ++i)</span><br><span class="line">  expr += vars[i] * x[i];</span><br><span class="line"><span class="comment">//这句话创建出来的表达式expr在后面的约束式、目标式中均可以直接使用</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="声明约束"><a href="#声明约束" class="headerlink" title="声明约束"></a>声明约束</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">IloModel <span class="title">model</span><span class="params">(env)</span></span>;</span><br><span class="line">model.<span class="built_in">add</span>(-vars[<span class="number">0</span>] + vars[<span class="number">1</span>] + vars[<span class="number">2</span>] &lt;= <span class="number">20</span>);<span class="comment">//subject to -x1 + x2 + x3 &lt;= 20</span></span><br><span class="line">model.<span class="built_in">add</span>(vars[<span class="number">0</span>] - <span class="number">3</span> * vars[<span class="number">1</span>] + vars[<span class="number">2</span>] &lt;= <span class="number">30</span>);<span class="comment">//x1 - 3 x2 + x3 &lt;=30</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="声明目标"><a href="#声明目标" class="headerlink" title="声明目标"></a>声明目标</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">add</span>(<span class="built_in">IloMaximize</span>(env, vars[<span class="number">0</span>] + <span class="number">2</span> * vars[<span class="number">1</span>] + <span class="number">3</span> * vars[<span class="number">2</span>])); <span class="comment">//maximize x1 + 2 x2 + 3 x3</span></span><br><span class="line"><span class="comment">//很显然这里的Max也可以改为Min</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h2 id="实例介绍"><a href="#实例介绍" class="headerlink" title="实例介绍"></a>实例介绍</h2><p>使用之前记得把解决方案改为<em><strong>Release x64</strong></em>。</p>
-<p>下面这个是Cplex自带的一个实例，可以用来测试一下自己的环境是否已经成功搭建。具体的实现内容，相信结合之前的语法介绍以及零星的一些注释也可以明白程序在求解一个什么形式的规划。</p>
-<p>在使用的使用在这个程序上修修改改一般就可以了。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ilcplex/ilocplex.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function">ILOSTLBEGIN</span></span><br><span class="line"><span class="function"><span class="keyword">int</span></span></span><br><span class="line"><span class="function"><span class="title">main</span><span class="params">(<span class="keyword">void</span>*)</span> </span>&#123;</span><br><span class="line">	IloEnv env;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="function">IloModel <span class="title">model</span><span class="params">(env)</span></span>;</span><br><span class="line">		<span class="function">IloNumVarArray <span class="title">vars</span><span class="params">(env)</span></span>;</span><br><span class="line">		vars.<span class="built_in">add</span>(<span class="built_in">IloNumVar</span>(env, <span class="number">0.0</span>, <span class="number">40.0</span>));  <span class="comment">// 0 &lt;= x1 &lt;= 40</span></span><br><span class="line">		vars.<span class="built_in">add</span>(<span class="built_in">IloNumVar</span>(env));  <span class="comment">// 0 &lt;= x2</span></span><br><span class="line">		vars.<span class="built_in">add</span>(<span class="built_in">IloNumVar</span>(env));  <span class="comment">// 0 &lt;= x3</span></span><br><span class="line">		model.<span class="built_in">add</span>(<span class="built_in">IloMaximize</span>(env, vars[<span class="number">0</span>] + <span class="number">2</span> * vars[<span class="number">1</span>] + <span class="number">3</span> * vars[<span class="number">2</span>])); <span class="comment">//maximize x1 + 2 x2 + 3 x3</span></span><br><span class="line">		model.<span class="built_in">add</span>(-vars[<span class="number">0</span>] + vars[<span class="number">1</span>] + vars[<span class="number">2</span>] &lt;= <span class="number">20</span>);<span class="comment">//subject to -x1 + x2 + x3 &lt;= 20</span></span><br><span class="line">		model.<span class="built_in">add</span>(vars[<span class="number">0</span>] - <span class="number">3</span> * vars[<span class="number">1</span>] + vars[<span class="number">2</span>] &lt;= <span class="number">30</span>);<span class="comment">//x1 - 3 x2 + x3 &lt;=30</span></span><br><span class="line">		<span class="function">IloCplex <span class="title">cplex</span><span class="params">(model)</span></span>;</span><br><span class="line">		<span class="keyword">if</span> (!cplex.<span class="built_in">solve</span>()) &#123;</span><br><span class="line">			env.<span class="built_in">error</span>() &lt;&lt; <span class="string">&quot;Failed to optimize LP.&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">throw</span>(<span class="number">-1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function">IloNumArray <span class="title">vals</span><span class="params">(env)</span></span>;</span><br><span class="line">		env.<span class="built_in">out</span>() &lt;&lt; <span class="string">&quot;Solution status = &quot;</span> &lt;&lt; cplex.<span class="built_in">getStatus</span>() &lt;&lt; endl;</span><br><span class="line">		env.<span class="built_in">out</span>() &lt;&lt; <span class="string">&quot;Solution value = &quot;</span> &lt;&lt; cplex.<span class="built_in">getObjValue</span>() &lt;&lt; endl;</span><br><span class="line">		cplex.<span class="built_in">getValues</span>(vals, vars);</span><br><span class="line">		env.<span class="built_in">out</span>() &lt;&lt; <span class="string">&quot;Values = &quot;</span> &lt;&lt; vals &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in"><span class="keyword">catch</span></span> (IloException &amp; e) &#123; cerr &lt;&lt; <span class="string">&quot;Concert exception caught: &quot;</span> &lt;&lt; e &lt;&lt; endl; &#125;</span><br><span class="line">	<span class="built_in"><span class="keyword">catch</span></span> (...) &#123; cerr &lt;&lt; <span class="string">&quot;Unknown exception caught&quot;</span> &lt;&lt; endl; &#125;</span><br><span class="line">	env.<span class="built_in">end</span>();</span><br><span class="line">	<span class="built_in">system</span>(<span class="string">&quot;pause&quot;</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/07/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Jackson Yu">
-      <meta itemprop="description" content="热爱可抵岁月漫长。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jackson Yu's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/10/07/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-10-07 20:42:39" itemprop="dateCreated datePublished" datetime="2021-10-07T20:42:39+08:00">2021-10-07</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/10/08/Cplex%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
