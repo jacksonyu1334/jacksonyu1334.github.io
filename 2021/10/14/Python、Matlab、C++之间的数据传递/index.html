@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<meta name="description" content="引言在数学建模里面，这三种语言应该是个人最常用的了。数学建模留给算法的时间其实是并不充裕的，因此聚焦于程序功能实现中的若干子过程，打一枪换一跑可以在很大程度上快速得出答案。但是这个看似只需要百度一下的过程，其实网上的很多教程还是有坑的，在本人的亲测下做出了行之有效的方案。下面是我的一些整理，会结合我遇到的问题持续更新内容。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python、Matlab、C++之间的数据传递">
+<meta property="og:url" content="http://example.com/2021/10/14/Python%E3%80%81Matlab%E3%80%81C++%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/index.html">
+<meta property="og:site_name" content="Jackson Yu&#39;s Blog">
+<meta property="og:description" content="引言在数学建模里面，这三种语言应该是个人最常用的了。数学建模留给算法的时间其实是并不充裕的，因此聚焦于程序功能实现中的若干子过程，打一枪换一跑可以在很大程度上快速得出答案。但是这个看似只需要百度一下的过程，其实网上的很多教程还是有坑的，在本人的亲测下做出了行之有效的方案。下面是我的一些整理，会结合我遇到的问题持续更新内容。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-14T03:11:23.000Z">
+<meta property="article:modified_time" content="2021-10-14T03:12:38.001Z">
+<meta property="article:author" content="Jackson Yu">
+<meta property="article:tag" content="数学建模">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/10/14/Python%E3%80%81Matlab%E3%80%81C++%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2021/10/14/Python%E3%80%81Matlab%E3%80%81C++%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/","path":"2021/10/14/Python、Matlab、C++之间的数据传递/","title":"Python、Matlab、C++之间的数据传递"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Python、Matlab、C++之间的数据传递 | Jackson Yu's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Jackson Yu's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Matlab%E8%AF%BB%E5%8F%96%E3%80%81%E5%AF%BC%E5%87%BA"><span class="nav-number">2.</span> <span class="nav-text">Matlab读取、导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab%E8%AF%BB%E5%8F%96"><span class="nav-number">2.1.</span> <span class="nav-text">Matlab读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matlab%E5%AF%BC%E5%87%BA"><span class="nav-number">2.2.</span> <span class="nav-text">Matlab导出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python%E8%AF%BB%E5%8F%96%E3%80%81%E5%AF%BC%E5%87%BA"><span class="nav-number">3.</span> <span class="nav-text">Python读取、导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E8%AF%BB%E5%8F%96"><span class="nav-number">3.1.</span> <span class="nav-text">Python读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python%E5%AF%BC%E5%87%BA"><span class="nav-number">3.2.</span> <span class="nav-text">Python导出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E8%AF%BB%E5%8F%96%E3%80%81%E5%AF%BC%E5%87%BA"><span class="nav-number">4.</span> <span class="nav-text">C++读取、导出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-%E8%AF%BB%E5%8F%96%E3%80%81%E5%AF%BC%E5%87%BA-1"><span class="nav-number">4.1.</span> <span class="nav-text">C++读取、导出</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Jackson Yu</p>
+  <div class="site-description" itemprop="description">热爱可抵岁月漫长。</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://poi.ac/" title="https:&#x2F;&#x2F;poi.ac&#x2F;" rel="noopener" target="_blank">tinmix</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.xi4oyu.top/" title="https:&#x2F;&#x2F;www.xi4oyu.top" rel="noopener" target="_blank">xi4oyu</a>
+        </li>
+    </ul>
+  </div>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/14/Python%E3%80%81Matlab%E3%80%81C++%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson Yu">
+      <meta itemprop="description" content="热爱可抵岁月漫长。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Yu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python、Matlab、C++之间的数据传递
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2021-10-14 11:11:23 / Modified: 11:12:38" itemprop="dateCreated datePublished" datetime="2021-10-14T11:11:23+08:00">2021-10-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在数学建模里面，这三种语言应该是个人最常用的了。数学建模留给算法的时间其实是并不充裕的，因此聚焦于程序功能实现中的若干子过程，打一枪换一跑可以在很大程度上快速得出答案。但是这个看似只需要百度一下的过程，其实网上的很多教程还是有坑的，在本人的亲测下做出了行之有效的方案。下面是我的一些整理，会结合我遇到的问题持续更新内容。</p>
+<span id="more"></span>
+
+
+
+<h2 id="Matlab读取、导出"><a href="#Matlab读取、导出" class="headerlink" title="Matlab读取、导出"></a>Matlab读取、导出</h2><h3 id="Matlab读取"><a href="#Matlab读取" class="headerlink" title="Matlab读取"></a>Matlab读取</h3><p>一般来说，Matlab理想的读取文件格式是mat，双击左侧文件中的mat文件，或者是通过<strong>n=load(‘n.mat’).n</strong>语句，把n.mat文件中的内容复制到当前程序中的n中，相对来说还是很方便的。</p>
+<p>对于其他如txt、excel等类型的文件，在左侧的工作区中右击选择导入数据，即可轻松地选择该文件中自己想要的数据，并不需要输入什么命令。</p>
+<h3 id="Matlab导出"><a href="#Matlab导出" class="headerlink" title="Matlab导出"></a>Matlab导出</h3><p>一般来说，我们只需要导出为两种格式，mat和csv，mat用于Matlab，csv用于python和c++。</p>
+<p>导出为mat：</p>
+<p>save(‘linjie2.mat’,’P’)</p>
+<p>这句话的意思是把当前工作台中的P变量，导出到linjie2.mat文件中。</p>
+<p>导出为csv：</p>
+<p>csvwrite(‘test.csv’,A);</p>
+<p>这句话的意思是把当前工作台中的A变量，导出到test.csv文件中。</p>
+<h2 id="Python读取、导出"><a href="#Python读取、导出" class="headerlink" title="Python读取、导出"></a>Python读取、导出</h2><h3 id="Python读取"><a href="#Python读取" class="headerlink" title="Python读取"></a>Python读取</h3><p>mat类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> scio</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">dataFile = <span class="string">&#x27;F:\mathematical-modeling\\task6\X.mat&#x27;</span></span><br><span class="line">data = scio.loadmat(dataFile)</span><br><span class="line">data = data[<span class="string">&#x27;X&#x27;</span>]</span><br><span class="line">p = np.array(data)</span><br></pre></td></tr></table></figure>
+
+<p>其中第四行代码是把列表形式转换成了numpy类型的矩阵。</p>
+<p>csv、txt类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;F:\matlabtest\\a.csv&#x27;</span>)<span class="keyword">as</span> f:</span><br><span class="line">    f_csv = csv.reader(f)</span><br><span class="line">    n = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> f_csv:</span><br><span class="line">        <span class="built_in">print</span>(row)</span><br><span class="line">        p[n, :] = np.array(row)</span><br><span class="line">        n = n + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>在这里我把csv读取的数据直接转换成了numpy的类型</p>
+<h3 id="Python导出"><a href="#Python导出" class="headerlink" title="Python导出"></a>Python导出</h3><p>csv类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;F:\matlabtest\\out.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>)<span class="keyword">as</span> f:  <span class="comment"># newline=&#x27;&#x27;是为了后面的数据之间没有空行</span></span><br><span class="line">    f_csv = csv.writer(f)</span><br><span class="line">    <span class="comment"># f_csv.writerow(headers)  # writerow 写入一行</span></span><br><span class="line">    f_csv.writerows(p)  <span class="comment"># writerows 写入多行</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>txt类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.savetxt(<span class="string">&#x27;F:\matlabtest\\out.txt&#x27;</span>, np.c_[p], fmt=<span class="string">&#x27;%f&#x27;</span>, delimiter=<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这句话把numpy类型的p转化成了txt形式</p>
+<h2 id="C-读取、导出"><a href="#C-读取、导出" class="headerlink" title="C++读取、导出"></a>C++读取、导出</h2><h3 id="C-读取、导出-1"><a href="#C-读取、导出-1" class="headerlink" title="C++读取、导出"></a>C++读取、导出</h3><p>一般来说，C++比较适合读取txt类型的文件，但是这里我发现一个问题——用matlab导出的txt或者csv文件，可能会存在编码上的问题（猜测？），C++在读取的时候会是空指针。针对这个问题，我的处理方法是用python先进行数据的读取，再导出为txt格式，曲线救国。也希望自己之后有空的时候可以去查询一下这到底是什么原因。</p>
+<p>用下列语句就可以很轻松地针对txt文件进行导入导出了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">FILE *fp_in = <span class="built_in">fopen</span>(<span class="string">&quot;F:\\matlabtest\\a.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line">FILE *fp_out = <span class="built_in">fopen</span>(<span class="string">&quot;F:\\matlabtest\\b.txt&quot;</span>, <span class="string">&quot;w&quot;</span>);</span><br><span class="line"><span class="built_in">fscanf</span>(fp_in, <span class="string">&quot;%d&quot;</span>, &amp;t);</span><br><span class="line"><span class="built_in">fprintf</span>(fp_out, <span class="string">&quot;%d\n&quot;</span>, t);</span><br><span class="line"><span class="built_in">fclose</span>(fp_in);</span><br><span class="line"><span class="built_in">fclose</span>(fp_out);</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag"># 数学建模</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/14/M1-Macbook-vscode-%E9%85%8D%E7%BD%AEC++%E7%8E%AF%E5%A2%83/" rel="prev" title="M1 Macbook vscode 配置 C++环境">
+                  <i class="fa fa-chevron-left"></i> M1 Macbook vscode 配置 C++环境
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jackson Yu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
