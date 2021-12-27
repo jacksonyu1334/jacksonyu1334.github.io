@@ -207,7 +207,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-12-27 19:49:36 / Modified: 20:49:34" itemprop="dateCreated datePublished" datetime="2021-12-27T19:49:36+08:00">2021-12-27</time>
+      <time title="Created: 2021-12-27 19:49:36 / Modified: 20:59:46" itemprop="dateCreated datePublished" datetime="2021-12-27T19:49:36+08:00">2021-12-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -252,6 +252,12 @@
 <h3 id="转发表和路由选择协议"><a href="#转发表和路由选择协议" class="headerlink" title="转发表和路由选择协议"></a>转发表和路由选择协议</h3><p>路由器从与它相连的一条通信链路得到分组，然后向与它相连的另一条通信链路转发该分组。路由器此时该选择哪条链路进行转发呢？不同的计算机网络实际上是通过不同的方式完成分组转发的。</p>
 <p>在因特网中，每台路由器具有一个<strong>转发表</strong>，用于将目的地址映射成为输出链路。</p>
 <h2 id="电路交换"><a href="#电路交换" class="headerlink" title="电路交换"></a>电路交换</h2><p>在端系统间通信绘画期间，预留了端系统间沿路径通信所需要的资源（缓存，链路传输速率）。具体地说，每台主机都与一台交换机直接相连，当两台主机要通信时，该网络在两台主机之间创建一条专用的端到端连接（end-to-end connection）。</p>
+<p>电路交换分为<strong>频分复用</strong>和<strong>时分复用</strong>。</p>
+<h2 id="分组交换与电路交换对比"><a href="#分组交换与电路交换对比" class="headerlink" title="分组交换与电路交换对比"></a>分组交换与电路交换对比</h2><p>分组交换缺点：不适合实时服务，因为它的端到端时延是可变的和不可预测的（主要是因为排队时延的变动和不可预测所致）。</p>
+<p>分组交换优点：1、它提供了比电路交换更好的带宽共享 2、它比电路交换更简单、更有效，实现成本更低。</p>
+<h2 id="网络的网络"><a href="#网络的网络" class="headerlink" title="网络的网络"></a>网络的网络</h2><p>其实说的就是ISP之间必须要互联。</p>
+<p>目前的因特网是这样解决这个问题的——通过分层。</p>
+<p>![截屏2021-12-27 下午8.57.41](/Users/jacson/blog/source/_posts/计算机网络和因特网/截屏2021-12-27 下午8.57.41.png) </p>
 
       
     </div>
