@@ -20,18 +20,21 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="热爱可抵岁月漫长。">
+<meta name="description" content="说好的两天一章，又🐦了这么长时间。什么都不愿意放弃的人，注定什么都无法得到。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="应用层">
 <meta property="og:url" content="http://example.com/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/index.html">
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
-<meta property="og:description" content="热爱可抵岁月漫长。">
+<meta property="og:description" content="说好的两天一章，又🐦了这么长时间。什么都不愿意放弃的人，注定什么都无法得到。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="http://example.com/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/%E5%90%84%E7%A7%8DDNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92.png">
 <meta property="article:published_time" content="2021-12-27T18:20:31.000Z">
-<meta property="article:modified_time" content="2021-12-28T02:01:56.946Z">
+<meta property="article:modified_time" content="2022-01-03T07:25:38.244Z">
 <meta property="article:author" content="Jackson Yu">
 <meta property="article:tag" content="应用层">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84.png">
 
 
 <link rel="canonical" href="http://example.com/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/">
@@ -95,7 +98,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -108,6 +111,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">应用层协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%A8%8B%E5%BA%8F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text">网络应用层程序体系结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">1.2.</span> <span class="nav-text">进程通信</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.2.1.</span> <span class="nav-text">进程与计算机网络之间的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%AF%BB%E5%9D%80"><span class="nav-number">1.2.2.</span> <span class="nav-text">进程寻址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E6%8F%90%E4%BE%9B%E7%9A%84%E8%BF%90%E8%BE%93%E6%9C%8D%E5%8A%A1"><span class="nav-number">2.</span> <span class="nav-text">因特网提供的运输服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS"><span class="nav-number">3.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">DNS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E5%B7%A5%E4%BD%9C%E6%9C%BA%E7%90%86%E6%A6%82%E8%BF%B0"><span class="nav-number">3.2.</span> <span class="nav-text">DNS工作机理概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84"><span class="nav-number">3.3.</span> <span class="nav-text">DNS服务器结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B9DNS%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.3.1.</span> <span class="nav-text">根DNS服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%B6%E7%BA%A7%E5%9F%9F%EF%BC%88DNS%EF%BC%89%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">顶级域（DNS）服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%83%E5%A8%81%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.3.3.</span> <span class="nav-text">权威服务器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0DNS%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">3.4.</span> <span class="nav-text">本地DNS服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">查询方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS%E7%BC%93%E5%AD%98"><span class="nav-number">3.6.</span> <span class="nav-text">DNS缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P2P%E6%96%87%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">3.7.</span> <span class="nav-text">P2P文件分发</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -209,10 +213,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-12-28 02:20:31 / Modified: 10:01:56" itemprop="dateCreated datePublished" datetime="2021-12-28T02:20:31+08:00">2021-12-28</time>
+      <time title="Created: 2021-12-28 02:20:31" itemprop="dateCreated datePublished" datetime="2021-12-28T02:20:31+08:00">2021-12-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-03 15:25:38" itemprop="dateModified" datetime="2022-01-03T15:25:38+08:00">2022-01-03</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -233,7 +243,42 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <p>说好的两天一章，又🐦了这么长时间。什么都不愿意放弃的人，注定什么都无法得到。</p>
+<span id="more"></span>
+
+<h1 id="应用层协议原理"><a href="#应用层协议原理" class="headerlink" title="应用层协议原理"></a>应用层协议原理</h1><h2 id="网络应用层程序体系结构"><a href="#网络应用层程序体系结构" class="headerlink" title="网络应用层程序体系结构"></a>网络应用层程序体系结构</h2><p>现代网络应用程序一般有两种主流体系结构：<strong>客户——服务器体系结构</strong> 或 <strong>对等（P2P）体系结构</strong>。 </p>
+<h2 id="进程通信"><a href="#进程通信" class="headerlink" title="进程通信"></a>进程通信</h2><p>用操作系统的术语来说，进行通信的实际上是<strong>进程（process）</strong>而不是程序，在两个不同端系统上的进程，通过跨越计算机网络交换<strong>报文（message）</strong>而相互通信。</p>
+<h3 id="进程与计算机网络之间的接口"><a href="#进程与计算机网络之间的接口" class="headerlink" title="进程与计算机网络之间的接口"></a>进程与计算机网络之间的接口</h3><p>多数应用程序是由通信进程对组成，每对中的两个进程互相发送报文。从一个进程向另一个进程发送的报文必须通过下面的网络。进程通过一个称为<strong>套接字（socket）</strong>的软件接口向网络发送报文和从网络接收报文。</p>
+<p>套接字是一台主机内应用层与传输层之间的接口，由于该套接字是建立网络应用程序的可编程接口，因此套接字也称为应用程序和网络之间的<strong>应用程序编程接口（Application Programming Interface，API</strong>）。</p>
+<h3 id="进程寻址"><a href="#进程寻址" class="headerlink" title="进程寻址"></a>进程寻址</h3><p>主机IP地址（IP Address）+端口号（Port Number）。</p>
+<h1 id="因特网提供的运输服务"><a href="#因特网提供的运输服务" class="headerlink" title="因特网提供的运输服务"></a>因特网提供的运输服务</h1><p>因特网为应用程序提供两个运输层协议，即UDP和TCP。</p>
+<p>TCP是可靠传输服务，是面向连接的服务。</p>
+<p>UDP是一种不提供不必要服务的轻量级运输协议，它仅提供最小服务，UDP是无连接的，提供一种不可靠数据传送服务，没有拥塞控制。</p>
+<h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><h2 id="DNS简介"><a href="#DNS简介" class="headerlink" title="DNS简介"></a>DNS简介</h2><p>DNS（Domain Name System） 域名系统，用于进行主机名到IP地址转换的目录服务。</p>
+<p>DNS是一个由分层的<strong>DNS服务器</strong>实现的分布式数据库，是一个使得主机能够查询分布式数据库的应用层协议。</p>
+<p>DNS协议运行在UDP之上，使用<strong>53</strong>号端口。</p>
+<h2 id="DNS工作机理概述"><a href="#DNS工作机理概述" class="headerlink" title="DNS工作机理概述"></a>DNS工作机理概述</h2><p>运行在用户主机上的某些应用程序需要将主机名转换为IP地址，这些应用程序将调用DNS的客户端，并指明需要被转换的主机名。</p>
+<p>用户主机的DNS接收到后，向网络中发送一个DNS查询报文。所有的DNS请求和回答报文使用UDP数据报经端口53发送。</p>
+<h2 id="DNS服务器结构"><a href="#DNS服务器结构" class="headerlink" title="DNS服务器结构"></a>DNS服务器结构</h2><p>DNS服务器是分布式、层次数据库。</p>
+<p>为了处理扩展性问题，DNS使用了大量的DNS服务器，它们以层次方式组织，并且分布在全世界范围内。没有一台DNS服务器拥有因特网上所有主机的映射。相反，这些映射分布在所有的DNS服务器上。</p>
+<p>大致来说，有3种类型的DNS服务器：<strong>根DNS服务器</strong>、<strong>顶级域（Top-Level Domain，TLD）DNS服务器</strong>和<strong>权威DNS服务器</strong>。</p>
+<p><img src="/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/DNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BB%93%E6%9E%84.png"></p>
+<h3 id="根DNS服务器"><a href="#根DNS服务器" class="headerlink" title="根DNS服务器"></a>根DNS服务器</h3><p>有400多个根名字服务器遍及全世界。这些根名字服务器由13个不同的组织管理。根名字服务器提供TLD服务器的地址。</p>
+<h3 id="顶级域（DNS）服务器"><a href="#顶级域（DNS）服务器" class="headerlink" title="顶级域（DNS）服务器"></a>顶级域（DNS）服务器</h3><p>对于每个顶级域（如com、org、net、edu和gov）和所有国家的顶级域（如uk、fr、ca和jp），都有TLD服务器（或服务器集群）。</p>
+<p>TLD服务器提供了权威DNS服务器的IP地址。</p>
+<h3 id="权威服务器"><a href="#权威服务器" class="headerlink" title="权威服务器"></a>权威服务器</h3><p>在因特网上具有公共可访问主机的每个组织机构必须提供公共可访问的DNS记录，这些记录将这些主机的名字映射为IP地址。</p>
+<p>一个组织机构的权威DNS服务器收藏了这些DNS记录。</p>
+<p>一个组织机构能够选择实现它自己的权威DNS服务器以保存这些记录；另一种方法是，该组织能够支付费用，让这些记录存储在某个服务提供商的一个权威DNS服务器中。</p>
+<h2 id="本地DNS服务器"><a href="#本地DNS服务器" class="headerlink" title="本地DNS服务器"></a>本地DNS服务器</h2><p>在根、TLD和权威DNS服务器都处在该DNS服务器的层次结构中，还有另一类重要的DNS服务器，称为本地DNS服务器。（严格来说，一个本地DNS服务器并不属于该服务器的层次机构，但它对DNS层次结构是至关重要的）</p>
+<p><img src="/2021/12/28/%E5%BA%94%E7%94%A8%E5%B1%82/%E5%90%84%E7%A7%8DDNS%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92.png"></p>
+<p>每个ISP都有一台本地DNS服务器。当主机和某个ISP连接时，该ISP提供一台本地DNS服务器（也叫默认名字服务器）。当主机与某个ISP连接时，该ISP提供一台主机的IP地址，该主机具有一台或多台本地DNS服务器的IP地址（通常通过DHCP）。通过访问WIndows或UNIX的网络状态窗口，用户能够容易地确定他的本地DNS服务器的IP地址。（主机的本地DNS服务器通常“邻近”本主机。）</p>
+<h2 id="查询方式"><a href="#查询方式" class="headerlink" title="查询方式"></a>查询方式</h2><p>查询方式可以分为<strong>递归查询</strong>和<strong>迭代查询</strong>。</p>
+<h2 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h2><p>为了改善时延性能并减少在因特网上到处传输的DNS报文数量，DNS广泛使用了缓存技术。</p>
+<p>原理：在一个请求链中，当某DNS服务器接收一个DNS回答时，它能将映射缓存保存到本地存储器中。</p>
+<h2 id="P2P文件分发"><a href="#P2P文件分发" class="headerlink" title="P2P文件分发"></a>P2P文件分发</h2><p>到2016年为止，最为流行的P2P文件分发协议是BitTorrent。</p>
+<p>参与一个特定文件分发的所有对等方的集合被称为一个洪流（torrent）。在一个洪流中的对等方彼此下载等长度的文件块（chunk），典型的块长度为256KB。</p>
+<p>当一个对等方首次加入一个洪流是，它没有块。</p>
+
     </div>
 
     
@@ -277,7 +322,7 @@
 
 <div class="copyright">
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
