@@ -117,7 +117,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -128,7 +128,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -173,6 +173,97 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson Yu">
+      <meta itemprop="description" content="热爱可抵岁月漫长。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Yu's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">运输层</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-01-05 20:32:30" itemprop="dateCreated datePublished" datetime="2022-01-05T20:32:30+08:00">2022-01-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2022-01-06 01:38:32" itemprop="dateModified" datetime="2022-01-06T01:38:32+08:00">2022-01-06</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B%E6%96%B9%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">计算机网络-自顶向下方法</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="运输层概述"><a href="#运输层概述" class="headerlink" title="运输层概述"></a>运输层概述</h1><p>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong>功能。从应用程序的角度看，通过<strong>逻辑通信</strong>，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。</p>
+<p>在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为<strong>运输层报文段</strong>。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网络层分组（数据报）并向目的地发送。</p>
+<p>在接收端，网络层从数据报中提取运输层报文段，并将该报文段向上交给运输层。</p>
+<h1 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h1><p>因特网为应用层提供了两种截然不同的可用传输层协议。</p>
+<p>一个是UDP（用户数据报协议），它为调用它的应用程序提供了一种不可靠、无连接的服务。</p>
+<p>一个是TCP（传输控制协议），它为调用它的应用程序提供了一种可靠、面向连接的服务。</p>
+<p>TCP和UDP的最基本责任是：将两个端系统间IP的交付服务扩展为运行在端系统上的两个进程之间的交付过程。将主机间交付扩展到进程间交付被称为运输层的<strong>多路复用</strong>与<strong>多路分解</strong>。</p>
+<p>TCP还为应用程序提供了几种附加服务。首先，它提供可靠<strong>数据传输</strong>，还提供<strong>拥塞控制</strong>。</p>
+<h1 id="多路复用和多路分解"><a href="#多路复用和多路分解" class="headerlink" title="多路复用和多路分解"></a>多路复用和多路分解</h1><p>因为在某一时刻，一台主机上可能不止有一个进程在运行，也就是说，主机上可能有不止一个套接字。</p>
+<p>从接收端的角度来看，运输层检查运输层报文段，标识出接收套接字，进而将报文段定向到该套接字。这一过程称为<strong>多路分解</strong>。</p>
+<p>在源主机从不同套接字中收集数据块，并为每个数据块封装上首部信息从而形成报文段，然后将报文段传递到网络层，所有这些工作称为<strong>多路复用</strong>。</p>
+<p>在这里，我们可以用源端口字段和目的端口字段来进行标识。</p>
+<h1 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
