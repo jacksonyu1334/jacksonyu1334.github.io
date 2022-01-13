@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="运输层概述运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信功能。从应用程序的角度看，通过逻辑通信，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。 在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为运输层报文段。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网络层">
+<meta name="description" content="运输层概述运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信功能。从应用程序的角度看，通过逻辑通信，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。 在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为运输层报文段。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="运输层">
 <meta property="og:url" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/index.html">
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
-<meta property="og:description" content="运输层概述运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信功能。从应用程序的角度看，通过逻辑通信，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。 在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为运输层报文段。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网络层">
+<meta property="og:description" content="运输层概述运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信功能。从应用程序的角度看，通过逻辑通信，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。 在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为运输层报文段。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-05T12:32:30.000Z">
-<meta property="article:modified_time" content="2022-01-05T17:38:32.105Z">
+<meta property="article:modified_time" content="2022-01-13T08:45:25.154Z">
 <meta property="article:author" content="Jackson Yu">
 <meta property="article:tag" content="运输层">
 <meta name="twitter:card" content="summary">
@@ -218,7 +218,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-06 01:38:32" itemprop="dateModified" datetime="2022-01-06T01:38:32+08:00">2022-01-06</time>
+        <time title="Modified: 2022-01-13 16:45:25" itemprop="dateModified" datetime="2022-01-13T16:45:25+08:00">2022-01-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -240,7 +240,9 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="运输层概述"><a href="#运输层概述" class="headerlink" title="运输层概述"></a>运输层概述</h1><p>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong>功能。从应用程序的角度看，通过<strong>逻辑通信</strong>，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。</p>
+        <span id="more"></span>
+
+<h1 id="运输层概述"><a href="#运输层概述" class="headerlink" title="运输层概述"></a>运输层概述</h1><p>运输层协议为运行在不同主机上的应用进程之间提供了<strong>逻辑通信</strong>功能。从应用程序的角度看，通过<strong>逻辑通信</strong>，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。</p>
 <p>在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为<strong>运输层报文段</strong>。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网络层分组（数据报）并向目的地发送。</p>
 <p>在接收端，网络层从数据报中提取运输层报文段，并将该报文段向上交给运输层。</p>
 <h1 id="TCP与UDP"><a href="#TCP与UDP" class="headerlink" title="TCP与UDP"></a>TCP与UDP</h1><p>因特网为应用层提供了两种截然不同的可用传输层协议。</p>
