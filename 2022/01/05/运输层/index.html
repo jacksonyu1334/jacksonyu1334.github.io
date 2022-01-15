@@ -27,11 +27,16 @@
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
 <meta property="og:description" content="运输层概述运输层协议为运行在不同主机上的应用进程之间提供了逻辑通信功能。从应用程序的角度看，通过逻辑通信，运行不同进程的主机好像直接向相连一样；实际上，这些主机也许位于地球的两侧，通过很多路由器及多种不同类型的链路相连。 在发送端，运输层将从发送应用程序接收到的报文转换成运输层分组，用因特网术语来讲该分组称为运输层报文段。然后，在发送端系统中，运输层将这些报文段传递给网络层，网络层将其封装成网">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/1.png">
+<meta property="og:image" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/2.png">
+<meta property="og:image" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/3.png">
+<meta property="og:image" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/4.png">
 <meta property="article:published_time" content="2022-01-05T12:32:30.000Z">
-<meta property="article:modified_time" content="2022-01-13T09:12:11.466Z">
+<meta property="article:modified_time" content="2022-01-13T12:20:57.707Z">
 <meta property="article:author" content="Jackson Yu">
 <meta property="article:tag" content="运输层">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/1.png">
 
 
 <link rel="canonical" href="http://example.com/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/">
@@ -108,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">运输层概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP%E4%B8%8EUDP"><span class="nav-number">2.</span> <span class="nav-text">TCP与UDP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%92%8C%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">多路复用和多路分解</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E8%BF%90%E8%BE%93%EF%BC%9AUDP"><span class="nav-number">4.</span> <span class="nav-text">无连接运输：UDP</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%90%E8%BE%93%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">运输层概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP%E4%B8%8EUDP"><span class="nav-number">2.</span> <span class="nav-text">TCP与UDP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E5%92%8C%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">多路复用和多路分解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">3.1.</span> <span class="nav-text">无连接的多路复用与多路分解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E4%B8%8E%E5%A4%9A%E8%B7%AF%E5%88%86%E8%A7%A3"><span class="nav-number">3.2.</span> <span class="nav-text">面向连接的多路复用与多路分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A0%E8%BF%9E%E6%8E%A5%E8%BF%90%E8%BE%93%EF%BC%9AUDP"><span class="nav-number">4.</span> <span class="nav-text">无连接运输：UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-number">4.1.</span> <span class="nav-text">UDP的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">4.2.</span> <span class="nav-text">UDP报文段结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8E%9F%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">可靠数据传输原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E8%BF%90%E8%BE%93%EF%BC%9ATCP"><span class="nav-number">6.</span> <span class="nav-text">面向连接的运输：TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP%E8%BF%9E%E6%8E%A5"><span class="nav-number">6.1.</span> <span class="nav-text">TCP连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="nav-number">6.2.</span> <span class="nav-text">TCP报文段结构</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -218,7 +223,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-13 17:12:11" itemprop="dateModified" datetime="2022-01-13T17:12:11+08:00">2022-01-13</time>
+        <time title="Modified: 2022-01-13 20:20:57" itemprop="dateModified" datetime="2022-01-13T20:20:57+08:00">2022-01-13</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -254,8 +259,32 @@
 <p>从接收端的角度来看，运输层检查运输层报文段，标识出接收套接字，进而将报文段定向到该套接字。这一过程称为<strong>多路分解</strong>。</p>
 <p>在源主机从不同套接字中收集数据块，并为每个数据块封装上首部信息从而形成报文段，然后将报文段传递到网络层，所有这些工作称为<strong>多路复用</strong>。</p>
 <p>在这里，我们可以用源端口字段和目的端口字段来进行标识。</p>
-<p>用一个简单的例子来说明，当Bill从邮递员处收到一份信件</p>
-<h1 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h1>
+<p>运输层报文中包含有<strong>源端口字段</strong>和<strong>目的端口字段</strong>。端口是16比特的数（0～65535）。</p>
+<p>0～1023范围的端口号称为<strong>周知端口号</strong>。</p>
+<h2 id="无连接的多路复用与多路分解"><a href="#无连接的多路复用与多路分解" class="headerlink" title="无连接的多路复用与多路分解"></a>无连接的多路复用与多路分解</h2><p>UDP使用的是无连接的多路复用和多路分解。</p>
+<p>一个UDP套接字是由一个二元组全面标识的，该二元组包含一个目的IP地址和一个目的端口号。</p>
+<h2 id="面向连接的多路复用与多路分解"><a href="#面向连接的多路复用与多路分解" class="headerlink" title="面向连接的多路复用与多路分解"></a>面向连接的多路复用与多路分解</h2><p>TCP套接字是由一个四元组（源IP地址，源端口号，目的IP地址，目的端口号）来标识的。</p>
+<h1 id="无连接运输：UDP"><a href="#无连接运输：UDP" class="headerlink" title="无连接运输：UDP"></a>无连接运输：UDP</h1><p>UDP从应用进程得到数据，附加上用于多路复用/分解服务的源和目的端口号字段，以及两个其他的小字段，然后将形成的报文段交给网络层。</p>
+<p>值得注意的是，使用UDP时，在发送报文段之前，发送方和接收方的运输层实体之间没有握手。正因为如此，UDP被称为是无连接的。</p>
+<h2 id="UDP的优点"><a href="#UDP的优点" class="headerlink" title="UDP的优点"></a>UDP的优点</h2><ul>
+<li>关于发送什么数据以及何时发送的应用层控制更为精细。</li>
+<li>无须连接建立。</li>
+<li>无连接状态。</li>
+<li>分组首部开销小。</li>
+</ul>
+<p><img src="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/1.png"></p>
+<h2 id="UDP报文段结构"><a href="#UDP报文段结构" class="headerlink" title="UDP报文段结构"></a>UDP报文段结构</h2><p><img src="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/2.png"></p>
+<p>UDP的校验和是把若干个16比特字加起来然后取反。它只提供差错检测功能，却没有差错恢复功能。</p>
+<h1 id="可靠数据传输原理"><a href="#可靠数据传输原理" class="headerlink" title="可靠数据传输原理"></a>可靠数据传输原理</h1><p>TCP为上层实体提供的服务抽象是：数据可以通过一条可靠的信道进行传输。借助于可靠信道，传输数据比特就不会收到损坏（由0变成1，或者相反）或丢失，而且所有数据都是按照其发送顺序进行交付。</p>
+<p>实现这种服务抽象是<strong>可靠数据传输协议（reliable data transfer protocol）</strong>的责任。有一项十分艰巨的任务，那就是可靠数据传输协议的下层协议也许是不可靠的，比如说IP层就是不可靠的（尽力交付）。</p>
+<h1 id="面向连接的运输：TCP"><a href="#面向连接的运输：TCP" class="headerlink" title="面向连接的运输：TCP"></a>面向连接的运输：TCP</h1><h2 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h2><p>TCP被称为是面向连接的。</p>
+<p>TCP“连接”不是一条像在电路交换网络中的端到端TDM或FDM电路。相反，该“连接”是一条逻辑连接，其共同状态仅保留在两个通信端系统的TCP程序中。中间路由器对TCP连接完全视而不见，它们看到的是数据报，而不是连接。中间路由器对TCP连接完全视而不见，它们看到的是数据报，而不是连接。</p>
+<p>TCP连接提供的是<strong>全双工服务</strong>：如果一台主机上的进程A和另一台主机上的进程B存在一条TCP连接，那么应用层数据就可以在从进程B流向进程A的同时，也从进程A流向进程B。TCP连接也总是点对点（point-to-point），也就是说对TCP而言，两台主机是一对。</p>
+<p><img src="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/3.png"></p>
+<p>如上图所示，报文段长度（Maximum Segment Size）最大为1460字节，加上TCP/IP首部长度40字节，得到MTU（Maximum Transmission Unit）为1500字节。</p>
+<h2 id="TCP报文段结构"><a href="#TCP报文段结构" class="headerlink" title="TCP报文段结构"></a>TCP报文段结构</h2><p><img src="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/4.png"></p>
+<p>当TCP发送一个大文件，通常会将该文件划分成长度为MSS的若干块（最后一块除外，它通常小于MSS）。</p>
+
     </div>
 
     
