@@ -20,25 +20,30 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-<meta name="description" content="热爱可抵岁月漫长。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jackson Yu&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/2022/01/index.html">
+<meta name="description" content="JVM介绍JVM定义Java Virtual Machine 好处 一次编写，到处运行 自动内存管理，垃圾回收功能 数组下标越界检查 多态  JVM、JRE、JDK之间的关系 JVM更像是一个空壳。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM入门">
+<meta property="og:url" content="http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
-<meta property="og:description" content="热爱可抵岁月漫长。">
+<meta property="og:description" content="JVM介绍JVM定义Java Virtual Machine 好处 一次编写，到处运行 自动内存管理，垃圾回收功能 数组下标越界检查 多态  JVM、JRE、JDK之间的关系 JVM更像是一个空壳。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/1.png">
+<meta property="article:published_time" content="2022-01-17T03:36:25.000Z">
+<meta property="article:modified_time" content="2022-01-17T06:07:47.476Z">
 <meta property="article:author" content="Jackson Yu">
+<meta property="article:tag" content="JVM学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/1.png">
 
 
-<link rel="canonical" href="http://example.com/archives/2022/01/">
+<link rel="canonical" href="http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":"","permalink":"","path":"archives/2022/01/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/","path":"2022/01/17/JVM入门/","title":"JVM入门"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | Jackson Yu's Blog</title>
+<title>JVM入门 | Jackson Yu's Blog</title>
   
 
 
@@ -92,7 +97,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -105,6 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">JVM介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">JVM定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A5%BD%E5%A4%84"><span class="nav-number">1.2.</span> <span class="nav-text">好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM%E3%80%81JRE%E3%80%81JDK%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">1.3.</span> <span class="nav-text">JVM、JRE、JDK之间的关系</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -172,89 +178,107 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 12 posts in total. Keep on posting.</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/17/JVM%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Jackson Yu">
+      <meta itemprop="description" content="热爱可抵岁月漫长。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jackson Yu's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JVM入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+      <time title="Created: 2022-01-17 11:36:25 / Modified: 14:07:47" itemprop="dateCreated datePublished" datetime="2022-01-17T11:36:25+08:00">2022-01-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="JVM介绍"><a href="#JVM介绍" class="headerlink" title="JVM介绍"></a>JVM介绍</h1><h2 id="JVM定义"><a href="#JVM定义" class="headerlink" title="JVM定义"></a>JVM定义</h2><p>Java Virtual Machine</p>
+<h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><ol>
+<li>一次编写，到处运行</li>
+<li>自动内存管理，垃圾回收功能</li>
+<li>数组下标越界检查</li>
+<li>多态</li>
+</ol>
+<h2 id="JVM、JRE、JDK之间的关系"><a href="#JVM、JRE、JDK之间的关系" class="headerlink" title="JVM、JRE、JDK之间的关系"></a>JVM、JRE、JDK之间的关系</h2><p><img src="/2022/01/17/JVM%E5%85%A5%E9%97%A8/1.png"></p>
+<p>JVM更像是一个空壳。</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-17T20:15:35+08:00"
-              content="2022-01-17">
-          01-17
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/17/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0/" itemprop="url">
-            <span itemprop="name">Java面向对象学习</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/JVM%E5%AD%A6%E4%B9%A0/" rel="tag"># JVM学习</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/" rel="prev" title="运输层">
+                  <i class="fa fa-chevron-left"></i> 运输层
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/01/17/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%AD%A6%E4%B9%A0/" rel="next" title="Java面向对象学习">
+                  Java面向对象学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-17T11:36:25+08:00"
-              content="2022-01-17">
-          01-17
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/17/JVM%E5%85%A5%E9%97%A8/" itemprop="url">
-            <span itemprop="name">JVM入门</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-01-05T20:32:30+08:00"
-              content="2022-01-05">
-          01-05
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/05/%E8%BF%90%E8%BE%93%E5%B1%82/" itemprop="url">
-            <span itemprop="name">运输层</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>
