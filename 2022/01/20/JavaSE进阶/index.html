@@ -27,16 +27,19 @@
 <meta property="og:site_name" content="Jackson Yu&#39;s Blog">
 <meta property="og:description" content="黑马课笔记。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/5.jpg">
 <meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/3.png">
 <meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/1.png">
 <meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/2.png">
 <meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/4.png">
+<meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/6.png">
+<meta property="og:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/7.png">
 <meta property="article:published_time" content="2022-01-20T14:17:16.000Z">
-<meta property="article:modified_time" content="2022-01-24T14:15:58.210Z">
+<meta property="article:modified_time" content="2022-02-08T06:51:58.022Z">
 <meta property="article:author" content="Jackson Yu">
 <meta property="article:tag" content="学习笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/3.png">
+<meta name="twitter:image" content="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/5.jpg">
 
 
 <link rel="canonical" href="http://example.com/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/">
@@ -113,7 +116,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#static%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">static关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">static修饰成员变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.1.</span> <span class="nav-text">静态成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">1.1.3.</span> <span class="nav-text">内存布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">static修饰成员方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">静态成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">1.2.2.</span> <span class="nav-text">静态成员方法内存机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">2.</span> <span class="nav-text">代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">2.1.</span> <span class="nav-text">静态代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">2.2.</span> <span class="nav-text">构造代码块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A5%BF%E6%B1%89%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.1.</span> <span class="nav-text">饿汉单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.1.1.</span> <span class="nav-text">设计步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%87%92%E6%B1%89%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.</span> <span class="nav-text">懒汉单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">3.2.1.</span> <span class="nav-text">设计模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">4.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%A7%E6%89%BF%EF%BC%9F"><span class="nav-number">4.1.</span> <span class="nav-text">什么是继承？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">继承的内存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">4.3.</span> <span class="nav-text">继承的特点</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E7%BB%9F%E4%B8%80"><span class="nav-number">1.</span> <span class="nav-text">IDEA开发模式统一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IDEA%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">IDEA项目结构介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">结构示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project%E5%B7%A5%E7%A8%8B%EF%BC%88%E6%B7%98%E5%AE%9D%E7%BD%91%E7%AB%99%EF%BC%89"><span class="nav-number">1.2.1.</span> <span class="nav-text">Project工程（淘宝网站）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Module%E6%A8%A1%E5%9D%97%EF%BC%88%E9%A6%96%E9%A1%B5%EF%BC%89"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Module模块（首页）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#package%E5%8C%851"><span class="nav-number">1.2.1.1.1.</span> <span class="nav-text">package包1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#package%E5%8C%852"><span class="nav-number">1.2.1.1.2.</span> <span class="nav-text">package包2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Module%E6%A8%A1%E5%9D%97%EF%BC%88%E8%B4%AD%E7%89%A9%E8%BD%A6%EF%BC%89"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Module模块（购物车）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#package%E5%8C%851-1"><span class="nav-number">1.2.1.2.1.</span> <span class="nav-text">package包1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#package%E5%8C%852-1"><span class="nav-number">1.2.1.2.2.</span> <span class="nav-text">package包2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Module%E6%A8%A1%E5%9D%97%EF%BC%88%E8%AE%A2%E5%8D%95%EF%BC%89"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">Module模块（订单）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#static%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.</span> <span class="nav-text">static关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">static修饰成员变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">静态成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.2.</span> <span class="nav-text">实例成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">2.1.3.</span> <span class="nav-text">内存布局</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">static修饰成员方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">静态成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">2.2.2.</span> <span class="nav-text">静态成员方法内存机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="nav-number">2.3.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">3.</span> <span class="nav-text">代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">3.1.</span> <span class="nav-text">静态代码块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="nav-number">3.2.</span> <span class="nav-text">构造代码块</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.</span> <span class="nav-text">单例模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A5%BF%E6%B1%89%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">饿汉单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.1.1.</span> <span class="nav-text">设计步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%87%92%E6%B1%89%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.2.</span> <span class="nav-text">懒汉单例设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.2.1.</span> <span class="nav-text">设计模式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">5.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BB%A7%E6%89%BF%EF%BC%9F"><span class="nav-number">5.1.</span> <span class="nav-text">什么是继承？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E5%86%85%E5%AD%98%E6%9C%BA%E5%88%B6"><span class="nav-number">5.2.</span> <span class="nav-text">继承的内存机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E7%89%B9%E7%82%B9"><span class="nav-number">5.3.</span> <span class="nav-text">继承的特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E8%AE%BF%E9%97%AE%E6%96%B9%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">成员变量、方法的访问方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="nav-number">7.</span> <span class="nav-text">方法重写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#override%E9%87%8D%E5%86%99%E6%B3%A8%E9%87%8A"><span class="nav-number">7.1.</span> <span class="nav-text">@override重写注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F"><span class="nav-number">7.2.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%85"><span class="nav-number">9.</span> <span class="nav-text">包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%BC%E5%8C%85"><span class="nav-number">9.1.</span> <span class="nav-text">导包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-number">10.</span> <span class="nav-text">权限修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6%EF%BC%9F"><span class="nav-number">10.1.</span> <span class="nav-text">什么是权限修饰符？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E5%85%B7%E4%BD%93%E4%BD%9C%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="nav-number">10.2.</span> <span class="nav-text">权限修饰符的分类和具体作用范围</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#final"><span class="nav-number">11.</span> <span class="nav-text">final</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#final%E4%BD%9C%E7%94%A8"><span class="nav-number">11.1.</span> <span class="nav-text">final作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%82%B9-1"><span class="nav-number">11.2.</span> <span class="nav-text">注意点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E9%87%8F"><span class="nav-number">12.</span> <span class="nav-text">常量</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">12.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="nav-number">12.2.</span> <span class="nav-text">执行原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE"><span class="nav-number">13.</span> <span class="nav-text">枚举</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">抽象类与抽象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">14.1.</span> <span class="nav-text">抽象类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F"><span class="nav-number">14.1.1.</span> <span class="nav-text">格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95"><span class="nav-number">14.2.</span> <span class="nav-text">抽象方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-1"><span class="nav-number">14.2.1.</span> <span class="nav-text">格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB"><span class="nav-number">14.3.</span> <span class="nav-text">关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">15.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="nav-number">15.1.</span> <span class="nav-text">什么是接口？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%BC%E5%BC%8F-2"><span class="nav-number">15.2.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">15.3.</span> <span class="nav-text">接口的用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">15.4.</span> <span class="nav-text">接口与接口的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK8%E5%BC%80%E5%A7%8B%E5%90%8E%E6%8E%A5%E5%8F%A3%E6%96%B0%E5%A2%9E%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">15.5.</span> <span class="nav-text">JDK8开始后接口新增的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%EF%BC%9A%E9%BB%98%E8%AE%A4%E6%96%B9%E6%B3%95"><span class="nav-number">15.5.1.</span> <span class="nav-text">第一种：默认方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%EF%BC%9A%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95"><span class="nav-number">15.5.2.</span> <span class="nav-text">第二种：静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%A7%8D%EF%BC%9A%E7%A7%81%E6%9C%89%E6%96%B9%E6%B3%95"><span class="nav-number">15.5.3.</span> <span class="nav-text">第三种：私有方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">15.6.</span> <span class="nav-text">使用接口的注意事项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E6%80%81"><span class="nav-number">16.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%A4%9A%E6%80%81"><span class="nav-number">16.1.</span> <span class="nav-text">什么是多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="nav-number">16.2.</span> <span class="nav-text">多态的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%80%81%E7%9A%84%E5%8A%A3%E5%8A%BF"><span class="nav-number">16.3.</span> <span class="nav-text">多态的劣势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">16.4.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%88%E4%BB%8E%E5%AD%90%E5%88%B0%E7%88%B6%EF%BC%89"><span class="nav-number">16.4.1.</span> <span class="nav-text">自动类型转换（从子到父）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%EF%BC%88%E4%BB%8E%E7%88%B6%E5%88%B0%E5%AD%90%EF%BC%89"><span class="nav-number">16.4.2.</span> <span class="nav-text">强制类型转换（从父到子）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">17.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E3%80%81%E4%BD%9C%E7%94%A8"><span class="nav-number">17.1.</span> <span class="nav-text">内部类的使用场景、作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB%E7%9A%84%E5%88%86%E7%B1%BB"><span class="nav-number">17.2.</span> <span class="nav-text">内部类的分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">17.3.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">17.4.</span> <span class="nav-text">成员内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-number">17.4.1.</span> <span class="nav-text">匿名内部类</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8API"><span class="nav-number">18.</span> <span class="nav-text">常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object%E7%B1%BB"><span class="nav-number">18.1.</span> <span class="nav-text">Object类</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -223,7 +226,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">Edited on</span>
-        <time title="Modified: 2022-01-24 22:15:58" itemprop="dateModified" datetime="2022-01-24T22:15:58+08:00">2022-01-24</time>
+        <time title="Modified: 2022-02-08 14:51:58" itemprop="dateModified" datetime="2022-02-08T14:51:58+08:00">2022-02-08</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -249,6 +252,22 @@
 <span id="more"></span>
 
 <p>[toc]</p>
+<h1 id="IDEA开发模式统一"><a href="#IDEA开发模式统一" class="headerlink" title="IDEA开发模式统一"></a>IDEA开发模式统一</h1><h2 id="IDEA项目结构介绍"><a href="#IDEA项目结构介绍" class="headerlink" title="IDEA项目结构介绍"></a>IDEA项目结构介绍</h2><ul>
+<li>project</li>
+<li>module</li>
+<li>package</li>
+<li>class</li>
+</ul>
+<h2 id="结构示例"><a href="#结构示例" class="headerlink" title="结构示例"></a>结构示例</h2><h3 id="Project工程（淘宝网站）"><a href="#Project工程（淘宝网站）" class="headerlink" title="Project工程（淘宝网站）"></a>Project工程（淘宝网站）</h3><h4 id="Module模块（首页）"><a href="#Module模块（首页）" class="headerlink" title="Module模块（首页）"></a>Module模块（首页）</h4><h5 id="package包1"><a href="#package包1" class="headerlink" title="package包1"></a>package包1</h5><p>class类</p>
+<p>class类</p>
+<h5 id="package包2"><a href="#package包2" class="headerlink" title="package包2"></a>package包2</h5><p>class类</p>
+<p>class类</p>
+<h4 id="Module模块（购物车）"><a href="#Module模块（购物车）" class="headerlink" title="Module模块（购物车）"></a>Module模块（购物车）</h4><h5 id="package包1-1"><a href="#package包1-1" class="headerlink" title="package包1"></a>package包1</h5><p>class类</p>
+<p>class类</p>
+<h5 id="package包2-1"><a href="#package包2-1" class="headerlink" title="package包2"></a>package包2</h5><p>class类</p>
+<p>class类</p>
+<p>class类</p>
+<h4 id="Module模块（订单）"><a href="#Module模块（订单）" class="headerlink" title="Module模块（订单）"></a>Module模块（订单）</h4><p><img src="/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/5.jpg"></p>
 <h1 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h1><p>static是静态的意思，可以修饰成员变量，表示该成员变量只在内存中存储一份，可以被共享访问、修改。</p>
 <h2 id="static修饰成员变量"><a href="#static修饰成员变量" class="headerlink" title="static修饰成员变量"></a>static修饰成员变量</h2><p>成员变量可以分为两类：静态成员变量和实例成员变量。</p>
 <h3 id="静态成员变量"><a href="#静态成员变量" class="headerlink" title="静态成员变量"></a>静态成员变量</h3><p>有static修饰，属于类，在内存中只存储一份。可以被共享访问。</p>
@@ -311,6 +330,245 @@
 <li>子类可以继承父类的私有成员变量，但是不能直接访问。</li>
 <li>子类可以直接使用父类的静态成员（共享）。</li>
 </ul>
+<h1 id="成员变量、方法的访问方法"><a href="#成员变量、方法的访问方法" class="headerlink" title="成员变量、方法的访问方法"></a>成员变量、方法的访问方法</h1><p>满足就近原则，即先访问子类的，再访问父类的。</p>
+<ul>
+<li>先子类局部范围找</li>
+<li>然后子类成员范围找</li>
+<li>然后父类成员范围找，如果父类范围还没有找到则报错</li>
+</ul>
+<p>如果子父类中，出现了重名的成员，会优先使用子类的，此时如果一定要在子类中使用父类的怎么办？</p>
+<p>可以使用super关键字，制定父类的成员</p>
+<p>格式：super.父类成员变量/父类成员方法</p>
+<h1 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h1><ul>
+<li>当子类需要父类的功能，但父类的功能不完全满足自己的需求</li>
+<li>子类可以重写父类的方法</li>
+</ul>
+<h2 id="override重写注释"><a href="#override重写注释" class="headerlink" title="@override重写注释"></a>@override重写注释</h2><ul>
+<li><strong>@Override</strong>是放在重写后的方法上，作为重写是否正确的校验注释</li>
+<li>加上该注释后如果重写错误，编译阶段会出现错误提示</li>
+</ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h2><ul>
+<li>私有方法不能被重写。可以这么理解：因为子类本来也不能访问父类的私有方法。</li>
+<li>子类重写方法时，权限必须大于等于父类。(public &gt; protected &gt; 缺省)</li>
+</ul>
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><ul>
+<li><p>子类中所有的构造器默认都会先访问父类中无参数的构造器，再执行自己的。</p>
+</li>
+<li><p>本质上是子类的构造器第一行有一个默认的super（），来执行父类的无参构造器。</p>
+</li>
+<li><p>如果父类中没有无参数构造器，只有有参数构造器，会报错。所以我们可以手动用super（参数）来调用有参构造器。</p>
+</li>
+</ul>
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1><p>包是用来分门别类管理不同的类，类似于文件夹，建包利于程序的管理和维护。</p>
+<h2 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h2><p>相同包下的类可以直接访问，不同包下的类必须导包，才可以使用。</p>
+<p>格式：import 包名.类名。</p>
+<p>如果要导入其他包中的类，需要使用形如：</p>
+<p>包名.类名，而不是简单地使用类名（因为如果只使用类名，那好像是在说我调用的这个类也是这个包里面的）。</p>
+<h1 id="权限修饰符"><a href="#权限修饰符" class="headerlink" title="权限修饰符"></a>权限修饰符</h1><h2 id="什么是权限修饰符？"><a href="#什么是权限修饰符？" class="headerlink" title="什么是权限修饰符？"></a>什么是权限修饰符？</h2><ul>
+<li><p>权限修饰符是用来控制一个成员能够被访问的范围。</p>
+</li>
+<li><p>可以修饰成员变量，方法，构造器，内部类，不同修饰符修饰的成员能够被访问的范围将受到限制。</p>
+</li>
+</ul>
+<h2 id="权限修饰符的分类和具体作用范围"><a href="#权限修饰符的分类和具体作用范围" class="headerlink" title="权限修饰符的分类和具体作用范围"></a>权限修饰符的分类和具体作用范围</h2><p><img src="/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/6.png"></p>
+<p>一般满足如下要求：</p>
+<ul>
+<li>成员变量一般私有</li>
+<li>方法一般公开</li>
+<li>如果该成员只希望本类访问，使用private修饰</li>
+<li>如果该成员只希望本类，同一个包下的其他类和子类访问，使用private</li>
+</ul>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><h2 id="final作用"><a href="#final作用" class="headerlink" title="final作用"></a>final作用</h2><ul>
+<li>修饰方法：表示该方法是最终方法，不能被重写。</li>
+<li>修饰变量：表示该变量第一次赋值后，不能再次被赋值（有且仅能被赋值一次），也就是说必须初始化赋值。</li>
+<li>修饰类：表示该类为最终类，不能被继承。</li>
+</ul>
+<h2 id="注意点-1"><a href="#注意点-1" class="headerlink" title="注意点"></a>注意点</h2><ul>
+<li>final修饰的变量是基本类型：那么变量存储的数据值不能发生改变。</li>
+<li>finla修饰的变量是引用类型：那么变量存储的地址值不能发生改变，但是地址指向的对象内容是可以发生变化的。</li>
+</ul>
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>常量就是p<strong>ublic static final</strong>修饰的成员变量，必须有初始化值，而且执行的过程中其值不能被改变。</li>
+<li>常量的作用和好处：可以用于做系统的配置信息，方便程序的维护，同时也能提高可读性。</li>
+</ul>
+<h2 id="执行原理"><a href="#执行原理" class="headerlink" title="执行原理"></a>执行原理</h2><ul>
+<li><p>在编译阶段会进行“宏替换”，把使用常量的地方全部替换成真实的字面量。</p>
+</li>
+<li><p>这样做的好处是使用常量的程序的执行性能与直接使用字面量是一样的。</p>
+</li>
+</ul>
+<h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><p>枚举是Java中的一种特殊类型。一般用来完成信息分类。</p>
+<p>格式：修饰符 enum 枚举名称{</p>
+<p>}<br><img src="/2022/01/20/JavaSE%E8%BF%9B%E9%98%B6/7.png"></p>
+<h1 id="抽象类与抽象方法"><a href="#抽象类与抽象方法" class="headerlink" title="抽象类与抽象方法"></a>抽象类与抽象方法</h1><h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>某个父类知道所有子类要完成某功能，但是每个子类完成情况都不一样，父类就只定义该功能的基本要求，具体实现由子类完成，这个类就可以是一个抽象类。</li>
+<li>抽象类不可以示例化。</li>
+<li>final和abstract是互斥关系，因为final修饰类，类不能被继承；abstract修饰类，类希望被继承。</li>
+</ul>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p>修饰符 abstract class 类名{}</p>
+<h2 id="抽象方法"><a href="#抽象方法" class="headerlink" title="抽象方法"></a>抽象方法</h2><ul>
+<li>抽象方法就是抽象类中定义的子类必须完成的功能的基本要求。</li>
+<li>没有方法体，只有方法签名，必须abstract修饰。</li>
+</ul>
+<h3 id="格式-1"><a href="#格式-1" class="headerlink" title="格式"></a>格式</h3><p>修饰符 abstract 返回值类型 方法名称（形参列表）</p>
+<h2 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h2><ul>
+<li><p>抽象类是用来被继承的，抽象方法是交给子类重写实现的。</p>
+</li>
+<li><p>一个类如果继承了抽象类，那么这个类必须重写完抽象类的全部抽象方法，否则这个类也必须定义成抽象类。</p>
+</li>
+</ul>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><h2 id="什么是接口？"><a href="#什么是接口？" class="headerlink" title="什么是接口？"></a>什么是接口？</h2><ul>
+<li>接口就是体现规范的，其中用抽象方法定义的一组行为规范，接口是更加彻底的抽象。</li>
+<li>体现了现实世界中“如果你是这类事物···就必须完成某些行为····”的思想。</li>
+<li>接口不能创建对象。</li>
+</ul>
+<h2 id="格式-2"><a href="#格式-2" class="headerlink" title="格式"></a>格式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> 接口名</span>&#123;</span><br><span class="line"><span class="comment">//	常量 public static final可以省略不写，接口会默认加上</span></span><br><span class="line"><span class="comment">// 	抽象方法 public abstract可以省略不写，接口会默认加上</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接口中的成员都是用public修饰的。</p>
+<h2 id="接口的用法"><a href="#接口的用法" class="headerlink" title="接口的用法"></a>接口的用法</h2><p>接口是用来被类实现的，实现接口的类称为实现类。实现类可以理解成所谓的子类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 <span class="class"><span class="keyword">class</span> 实现类 <span class="keyword">implements</span> 接口1，接口2，接口3，···</span>&#123;  </span><br><span class="line">&#125;</span><br><span class="line">实现的关键字：implements</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从上面可以看出，接口可以被类单实现，也可以被类多实现。</li>
+<li>一个类实现接口，必须重写完全部接口的全部抽象方法，否则这个类需要定义成抽象类。 </li>
+</ul>
+<h2 id="接口与接口的关系"><a href="#接口与接口的关系" class="headerlink" title="接口与接口的关系"></a>接口与接口的关系</h2><ul>
+<li><p>多继承，一个接口可以继承多个接口。</p>
+</li>
+<li><p>方便整合</p>
+</li>
+</ul>
+<h2 id="JDK8开始后接口新增的方法"><a href="#JDK8开始后接口新增的方法" class="headerlink" title="JDK8开始后接口新增的方法"></a>JDK8开始后接口新增的方法</h2><ul>
+<li><p>如何能在丰富接口功能的同时又不对子类代码进行更改呢？</p>
+<p>允许接口中直接定义带有方法体的方法</p>
+</li>
+</ul>
+<h3 id="第一种：默认方法"><a href="#第一种：默认方法" class="headerlink" title="第一种：默认方法"></a>第一种：默认方法</h3><ul>
+<li>类似于之前写的普通实例方法：必须用default修饰</li>
+<li>默认会public修饰。需要用接口的实现类的对象来调用</li>
+</ul>
+<p>格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  System.out.println(<span class="string">&quot;开始跑&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="第二种：静态方法"><a href="#第二种：静态方法" class="headerlink" title="第二种：静态方法"></a>第二种：静态方法</h3><ul>
+<li>默认会public修饰，必须static修饰</li>
+<li>注意：接口的静态方法必须用本身的接口名来调用。</li>
+</ul>
+<h3 id="第三种：私有方法"><a href="#第三种：私有方法" class="headerlink" title="第三种：私有方法"></a>第三种：私有方法</h3><ul>
+<li>就是私有的实例方法；必须使用private修饰，从JDK1.9才开始有的</li>
+<li>只能在本类中被其他的默认方法或者私有方法访问。</li>
+</ul>
+<h2 id="使用接口的注意事项"><a href="#使用接口的注意事项" class="headerlink" title="使用接口的注意事项"></a>使用接口的注意事项</h2><ul>
+<li><p>接口不能创建对象</p>
+</li>
+<li><p>一个类实现多个接口，多个接口中有同样的静态方法不冲突。（JDK8）</p>
+</li>
+<li><p>一个类继承了父类，同时又实现了接口，父类中和接口中有同名方法，默认用父类的。</p>
+</li>
+<li><p>一个类实现了多个接口，多个接口中存在同名的默认方法，不冲突，这个类重写该方法即可。</p>
+</li>
+<li><p>一个接口继承多个接口，是没有问题的，但多个接口中存在规范冲突则不能多继承。</p>
+<p>比如说：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">B</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span>,<span class="title">B</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是错误的，因为run在A中是int返回类型，而在B中是void类型，发生了规范冲突。</p>
+</li>
+</ul>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><h2 id="什么是多态"><a href="#什么是多态" class="headerlink" title="什么是多态"></a>什么是多态</h2><ul>
+<li><p>同类型的对象，执行同一个行为，会表现出不同的行为特征。</p>
+</li>
+<li><p>多态的常见形式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">父类类型 对象名称 = <span class="keyword">new</span> 子类构造器；</span><br><span class="line">接口 对象名称 = <span class="keyword">new</span> 实现类构造器；</span><br></pre></td></tr></table></figure></li>
+<li><p>多态中成员访问特点：</p>
+<ul>
+<li>方法调用：编译看左边，运行看右边。</li>
+<li>变量调用：编译和运行都看左边。（多态侧重行为多态）</li>
+</ul>
+</li>
+<li><p>多态的前提：</p>
+<p>有继承/实现关系；有父类引用指向子类对象；有方法重写。</p>
+</li>
+</ul>
+<h2 id="多态的优势"><a href="#多态的优势" class="headerlink" title="多态的优势"></a>多态的优势</h2><ul>
+<li>在多态形式下，右边对象可以实现解耦合，便于扩展和维护。</li>
+<li>定义方法的时候，使用父类型作为参数，该方法就可以接收这父类的一切子类对象，体现出多态的扩展性与便利。</li>
+</ul>
+<h2 id="多态的劣势"><a href="#多态的劣势" class="headerlink" title="多态的劣势"></a>多态的劣势</h2><ul>
+<li>多态下对象不能使用子类的独有功能。</li>
+</ul>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><h3 id="自动类型转换（从子到父）"><a href="#自动类型转换（从子到父）" class="headerlink" title="自动类型转换（从子到父）"></a>自动类型转换（从子到父）</h3><p>子类对象赋值给父类类型的变量指向。</p>
+<h3 id="强制类型转换（从父到子）"><a href="#强制类型转换（从父到子）" class="headerlink" title="强制类型转换（从父到子）"></a>强制类型转换（从父到子）</h3><ul>
+<li><p>此时必须进行强制类型转换： 子类 对象变量 = （子类）父类类型的变量。</p>
+</li>
+<li><p>作用：可以解决多态下的劣势，可以实现调用子类独有的功能。</p>
+</li>
+<li><p>如果转型后的类型和对象真实类型不是同一种类型，那么在转换的时候就会出现ClassCastException。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Anminal a = <span class="keyword">new</span> Tortoise();</span><br><span class="line">Dog d = (Dog) a; &lt;------ 这么写是错误的</span><br><span class="line">Tortoise t = (Tortoise) a;&lt;------正确</span><br><span class="line">可以用 a <span class="keyword">instanceof</span> Tortoise 来判断真实类型是否为Tortoise,(返回True 或 False)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><ul>
+<li>内部类就是定义在一个类中的类，里面的类可以理解成寄生，外部类可以理解成宿主。</li>
+</ul>
+<h2 id="内部类的使用场景、作用"><a href="#内部类的使用场景、作用" class="headerlink" title="内部类的使用场景、作用"></a>内部类的使用场景、作用</h2><ul>
+<li>一个事物的内部，还有一个部分需要一个完整的结构进行描述，而这个内部的完整的结构又<strong>只为</strong>外部事物提供服务，那么整个内部的完整结构可以选择使用内部类来设计。</li>
+<li>内部类通常可以方便访问外部类的成员，包括私有的成员。</li>
+<li>内部类提供了更好的封装性，内部类本身就可以用private protected等修饰，封装性可以做更多控制。</li>
+</ul>
+<h2 id="内部类的分类"><a href="#内部类的分类" class="headerlink" title="内部类的分类"></a>内部类的分类</h2><ul>
+<li>静态内部类</li>
+<li>成员内部类</li>
+<li>局部内部类</li>
+<li>匿名内部类（重点）</li>
+</ul>
+<h2 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h2><ul>
+<li><p>场景：一个类中包含了一个完整的成分，如汽车类中的发动机类。</p>
+</li>
+<li><p>用static修饰，属于外部类本身。</p>
+</li>
+<li><p>它的特点和使用与普通类是完全一样的，类有的成分它都有，只是位置在别人里面而已。</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br></pre></td></tr></table></figure>
+<p>  }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">* 创建对象/使用方法的格式：</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">Outer.Inner in = new Outer.Inner();</span><br><span class="line">in.show();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>静态内部类中可以直接访问外部类的静态成员</li>
+<li>静态内部类中不可以直接访问外部类中的实例成员，因为外部类的实例成员必须用外部类对象访问</li>
+</ul>
+<h2 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h2><ul>
+<li>无static修饰，属于外部类的成员</li>
+<li>成员内部类是寄生在外部类上的，必须先访问外部对象</li>
+<li>成员内部类的实例方法可以直接访问外部类对象的实例成员，因为寄生关系。外部类.this.heartbeat</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span></span><br><span class="line"><span class="class">  </span>&#123;</span><br></pre></td></tr></table></figure>
+<p>  }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```java</span><br><span class="line">Outer.Inner in = new Outer.new Inner();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><ul>
+<li><p>本质上是一个没有名字的局部内部类，定义在方法中、代码块中等</p>
+</li>
+<li><p>作用：方便创建子类对象，简化代码编写。</p>
+</li>
+<li><p>格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 类｜抽象类名｜接口名（）</span><br><span class="line">&#123;</span><br><span class="line">  重写方法；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Employee a = <span class="keyword">new</span> Employee()</span><br><span class="line">&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">a.work</span><br></pre></td></tr></table></figure></li>
+<li><p>匿名内部类是一个没有名字的内部类</p>
+</li>
+<li><p>匿名内部类写出来就会产生一个匿名内部类的对象</p>
+</li>
+<li><p>匿名内部类的对象类型相当于是当前new的那个类型的子类类型</p>
+</li>
+<li><p>编译看左边，运行看右边</p>
+</li>
+</ul>
+<h1 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h1><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><ul>
+<li>一个类要么默认继承了Object类，要么间接继承了Object类，Object类是Java中的祖宗类。</li>
+<li>Object类的方法是一切子类都可以直接使用的。</li>
+</ul>
+<p>常用方法：</p>
 
     </div>
 
